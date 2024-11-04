@@ -1,6 +1,7 @@
 # Rails script to remove duplicate email addresses, keeping only the first occurrence
 
-Email.find_each(batch_size: 30) do |email|
+Email.where(address_new: nil).find_each(batch_size: 10000) do |email|
+  puts "Processing id = #{email.id}" if email.id % 10000 == 0
   # Simply let the DB trigger do its job, copying the address to address_new
   email.touch
 

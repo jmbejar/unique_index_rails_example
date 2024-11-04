@@ -2,7 +2,6 @@ class AddMissingIndexToEmailAddressStep2 < ActiveRecord::Migration[7.2]
   def change
     change_column_null :emails, :address, false
 
-    # Step 1: Create the function
     execute <<-SQL
       BEGIN;
 
